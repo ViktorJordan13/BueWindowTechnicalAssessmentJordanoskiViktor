@@ -13,6 +13,20 @@ module.exports = class BrandRating{
 
         return db.execute('SELECT * FROM brandsratings');
         
+    }
 
+    static post(name, country, rating){
+
+        return db.execute('INSERT INTO brandsratings (name, country, rating) VALUES (?, ?, ?)', [name, country, rating]);
+    }
+
+    static update(name, country, rating){
+
+        return db.execute('UPDATE brandsratings SET name = ?, country = ?, rating = ? WHERE name = ? AND country = ?', [name, country, rating, name, country]);
+    }
+
+    static delete(name, country){
+
+        return db.execute('DELETE FROM brandsratings WHERE name = ? AND country = ?', [name, country]);
     }
 };

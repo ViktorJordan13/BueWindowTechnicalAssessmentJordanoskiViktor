@@ -6,4 +6,10 @@ const router = express.Router();
 
 router.get('/', brandController.getAllBrands);
 
+router.post('/', brandController.postBrand);
+
+router.put('/', brandController.putBrand);
+
+router.delete('/', brandController.deleteBrand);
+
 module.exports = router;

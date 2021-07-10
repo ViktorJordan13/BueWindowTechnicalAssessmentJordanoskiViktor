@@ -6,4 +6,10 @@ const router = express.Router();
 
 router.get('/', brandRatingController.getAllBrandsRatings);
 
+router.post('/', brandRatingController.postBrandRatings);
+
+router.put('/', brandRatingController.putBrandRatings);
+
+router.delete('/', brandRatingController.deleteBrandRatings);
+
 module.exports = router;

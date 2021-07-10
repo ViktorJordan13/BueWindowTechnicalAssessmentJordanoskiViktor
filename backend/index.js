@@ -1,26 +1,15 @@
 const express = require('express');
 
+const brandRoutes = require('./routes/brand'); 
+
+const brandRatingRoutes = require('./routes/brandRating'); 
+
 const app = express();
 
 const ports = process.env.PORT || 3000;
 
-const brands = [
+app.use('/brands', brandRoutes);
 
-    {
-        id: 1,
-        name: 'Adidas',
-        description: 'Sports brand'
-    },
-
-    {
-        id: 2,
-        name: 'Zara',
-        description: 'Fashion brand'
-    }
-]
-
-app.get('/', (req, res) => {
-    res.send(brands);
-});
+app.use('/brandsRatings', brandRatingRoutes);
 
 app.listen(ports, () => console.log(`listening on port ${ports}`));

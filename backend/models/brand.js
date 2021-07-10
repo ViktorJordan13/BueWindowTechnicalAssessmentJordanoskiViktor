@@ -1,3 +1,5 @@
+const db = require('../util/database')
+
 module.exports = class Brand{
 
     constructor(id,  name, description){
@@ -8,20 +10,7 @@ module.exports = class Brand{
 
     static fetchAll(){
 
-        return [
-
-            {
-                id: 1,
-                name: 'Adidas',
-                description: 'Sports brand'
-            },
-        
-            {
-                id: 2,
-                name: 'Zara',
-                description: 'Fashion brand'
-            },
-        ];
+        return db.execute('SELECT * FROM brands');
 
     }
 };

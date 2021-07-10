@@ -15,14 +15,14 @@ Navigate to backend/config/config.json and change the password to your MySQL pas
 
   "user": "root",
 
-  "database": "posts",
+  "database": "brands",
 
   "password": "< password >"
 
 }
 
 
-Note: For development purposes the host is localhost but this will need to be updated if you decide to deploy the application. By Default, MySQL gives the user 'root' with all privileges. You can simply change this to another user if desired. In this application we named our database 'brands', however, if you went with a different name this will need to be changed.
+Note: For development purposes the host is localhost but this will need to be updated if you decide to deploy the application. By Default, MySQL gives the user 'root' with all privileges. You can simply change this to another user if desired. In this application I named our database 'brands', however, if you went with a different name this will need to be changed.
 
 cd backend
 

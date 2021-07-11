@@ -74,6 +74,18 @@
   >
     <mat-icon>add</mat-icon>
   </button>
+
+  <mat-form-field style="width: 100%;" >
+    <mat-label>Brand Ratings Selection</mat-label>
+    <mat-select >
+      
+      <mat-option  *ngFor="let brand of brands$ | async" value = brand.name  >
+        {{brand.name}}
+      </mat-option>
+    </mat-select>
+  
+  </mat-form-field>
+
   <mat-form-field style="width: 100%;">
     <mat-label>Brand Ratings name</mat-label>
     <input #brandRatingName matInput placeholder="maximum length of 64 characters, only stored if name not already on the list " />
@@ -117,4 +129,40 @@
       </span>
     </mat-list-item>
   </mat-list>
+</mat-card>
+
+<h1
+  style="
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+  "
+>
+  Top Brands Lists by Country
+</h1>
+
+<mat-card style="width: 50%; margin: auto;">
+  
+  <button
+   
+    mat-fab
+    color="primary"
+    style="float: right;"
+  >
+  Select
+  <mat-icon>done</mat-icon>
+  </button>
+
+  <mat-form-field style="width: 100%;" >
+    <mat-label>Select Top Brands by Country</mat-label>
+    <mat-select >
+      
+      <mat-option  *ngFor="let brandRating of brandsRatings$ | async" value = brandRating.country  >
+        {{brandRating.country}}
+      </mat-option>
+    </mat-select>
+
+  </mat-form-field>
+  
 </mat-card>

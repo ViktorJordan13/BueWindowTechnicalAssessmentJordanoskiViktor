@@ -76,5 +76,11 @@ export class BrandListCrudService {
       .post<BrandRating>(this.urlRating, brandRating, this.httpOptions)
       .pipe(catchError(this.errorHandlerService.handleError<any>("post")));
   }
+
+  updateRating(brandRating: BrandRating): Observable<any> {
+    return this.http
+      .put<BrandRating>(this.urlRating, brandRating, this.httpOptions)
+      .pipe(catchError(this.errorHandlerService.handleError<any>("update")));
+  }
   
 }

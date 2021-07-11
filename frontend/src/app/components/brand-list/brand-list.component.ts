@@ -82,5 +82,22 @@ postRatings(brandRatingName: ThisType<BrandRating>, brandRatingCountry: ThisType
   .postRating({ name, country, rating})
   .pipe(tap((_) => (this.brandsRatings$ = this.fetchAllRatings())));
 }
+
+updateRatings(brandRatingName: ThisType<BrandRating>, brandRatingCountry: ThisType<BrandRating>, brandRatingRating: ThisType<BrandRating>): void{
+
+  const name = (<string>brandRatingName).trim();
+  const country = (<string>brandRatingCountry).trim();
+  const rating = (<number>brandRatingRating);
+  if(!name) return;
+
+  const newBrandRating: BrandRating = {
+    name,
+    country,
+    rating
+  }
+  this.brandsRatings$ = this.brandListCrudService
+    .updateRating(newBrandRating)
+    .pipe(tap((_) => (this.brandsRatings$ = this.fetchAllRatings())));
+}
   
 }

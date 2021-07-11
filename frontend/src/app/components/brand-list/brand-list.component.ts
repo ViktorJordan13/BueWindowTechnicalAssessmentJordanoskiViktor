@@ -69,5 +69,18 @@ export class BrandListComponent implements OnInit {
   fetchAllRatings(): Observable <BrandRating[]>{
     return this.brandListCrudService.fetchAllRatings();
 }
+
+postRatings(brandRatingName: ThisType<BrandRating>, brandRatingCountry: ThisType<BrandRating>, brandRatingRating: ThisType<BrandRating>): void{
+
+  const name = (<string>brandRatingName).trim();
+  const country = (<string>brandRatingCountry).trim();
+  const rating = (<number>brandRatingRating);
+  if(!name) return;
+  //console.log(name);
+  //console.log(description);
+  this.brandsRatings$ = this.brandListCrudService
+  .postRating({ name, country, rating})
+  .pipe(tap((_) => (this.brandsRatings$ = this.fetchAllRatings())));
+}
   
 }

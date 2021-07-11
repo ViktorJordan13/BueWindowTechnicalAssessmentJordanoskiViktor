@@ -67,7 +67,7 @@
 
 <mat-card style="width: 50%; margin: auto;">
   <button
-    
+  (click)="postRatings(brandRatingName.value, brandRatingCountry.value, brandRatingRating.value)"
     mat-fab
     color="primary"
     style="float: right;"
@@ -81,7 +81,7 @@
 
   <mat-form-field style="width: 100%;">
     <mat-label>Brand Ratings country</mat-label>
-    <input #brandRatingCountry maxlength=2  pattern="[A-Z]*"
+    <input #brandRatingCountry  maxlength=2  pattern="[A-Z]*"
      oninput="validity.valid||(value='');"
      matInput placeholder="Enter a two capital lettered country code. Example: GE,FR, HU " />
   </mat-form-field>

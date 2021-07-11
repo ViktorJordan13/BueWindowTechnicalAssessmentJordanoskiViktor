@@ -56,3 +56,18 @@ exports.deleteBrandRatings =  async (req, res, next) => {
         next(err);
         }
 }
+
+exports.sortBrandsRatings = async (req, res, next) => {
+
+    try{
+        const [allBrandsRatings] = await BrandRating.sort(req.body.country);
+        res.status(200).json(allBrandsRatings);
+        await BrandRating.sort();
+
+    }catch(err){
+        if(!err.statusCode){
+            err.statusCode = 500;
+        }
+        next(err);
+    }
+}

@@ -29,4 +29,12 @@ module.exports = class BrandRating{
 
         return db.execute('DELETE FROM brandsratings WHERE name = ? AND country = ?', [name, country]);
     }
+
+    static sort(country){
+
+        return db.execute('SELECT * FROM brandsratings WhHERE country = ? ORDER BY rating DESC', [country]);
+        
+    }
+
+
 };

@@ -76,7 +76,7 @@
   </button>
 
   <mat-form-field style="width: 100%;" >
-    <mat-label>Brand Ratings Selection</mat-label>
+    <mat-label>Check Brands selection</mat-label>
     <mat-select >
       
       <mat-option  *ngFor="let brand of brands$ | async" value = brand.name  >
@@ -88,7 +88,7 @@
 
   <mat-form-field style="width: 100%;">
     <mat-label>Brand Ratings name</mat-label>
-    <input #brandRatingName matInput placeholder="maximum length of 64 characters, only stored if name not already on the list " />
+    <input #brandRatingName matInput placeholder="maximum length of 64 characters, only stored if name and country combination not already on the list " />
   </mat-form-field>
 
   <mat-form-field style="width: 100%;">
@@ -155,7 +155,7 @@
   </button>
 
   <mat-form-field style="width: 100%;" >
-    <mat-label>Select Top Brands by Country</mat-label>
+    <mat-label>Check Countries that have at least one rating of a brand</mat-label>
     <mat-select >
       
       <mat-option  *ngFor="let brandRating of brandsRatings$ | async" value = brandRating.country  >
@@ -164,5 +164,22 @@
     </mat-select>
 
   </mat-form-field>
+
+  <mat-form-field style="width: 100%;">
+    <mat-label>Brand Ratings country</mat-label>
+    <input #brandRatingCountry  maxlength=2  pattern="[A-Z]*"
+     oninput="validity.valid||(value='');"
+     matInput placeholder="Enter a two capital lettered country code. Example: GE,FR, HU " />
+  </mat-form-field>
+
+  <mat-list>
+    <mat-list-item  *ngFor="let brandRating of brandsRatings$ | async">
+      <span style="font-weight: bold;"
+        >Brand {{brandRating.name}}, {{brandRating.rating}}  </span
+      >
+      
+    </mat-list-item>
+  </mat-list>
+  
   
 </mat-card>

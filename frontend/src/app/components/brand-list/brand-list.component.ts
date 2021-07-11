@@ -5,7 +5,10 @@ import { BrandListCrudService } from 'src/app/services/brand-list-crud.service';
 
 import { Brand } from 'src/app/models/Brand';
 
+import { BrandRating } from 'src/app/models/BrandRating';
+
 import {tap} from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-brand-list',
@@ -15,11 +18,13 @@ import {tap} from 'rxjs/operators';
 export class BrandListComponent implements OnInit {
 
   brands$!: Observable<Brand[]>
+  brandsRatings$!: Observable<BrandRating[]>
 
   constructor(private brandListCrudService: BrandListCrudService) { }
 
   ngOnInit(): void {
     this.brands$ = this.fetchAll();
+    this.brandsRatings$ = this.fetchAllRatings();
   }
 
   fetchAll(): Observable <Brand[]>{
@@ -60,5 +65,9 @@ export class BrandListComponent implements OnInit {
       .delete(id)
       .pipe(tap((_) => (this.brands$ = this.fetchAll())));
   }
+
+  fetchAllRatings(): Observable <BrandRating[]>{
+    return this.brandListCrudService.fetchAllRatings();
+}
   
 }

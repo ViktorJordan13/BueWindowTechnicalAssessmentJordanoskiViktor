@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { catchError, tap } from "rxjs/operators";
 
 import { Brand } from "../models/Brand";
+import { BrandRating } from '../models/BrandRating';
 import { ErrorHandlerService } from './error-handler.service';
 
 @Injectable({
@@ -15,6 +16,7 @@ import { ErrorHandlerService } from './error-handler.service';
 export class BrandListCrudService {
 
   private url = "http://localhost:3000/brands";
+  private urlRating = "http://localhost:3000/brandsRatings";
 
   httpOptions: { headers: HttpHeaders } = {
     headers: new HttpHeaders({ "Content-Type": "application/json" }),
@@ -54,6 +56,19 @@ export class BrandListCrudService {
     return this.http
     .delete<Brand>(url, this.httpOptions)
     .pipe(catchError(this.errorHandlerService.handleError<any>("delete")));
+
+  }
+
+  fetchAllRatings(): Observable <BrandRating[]> {
+
+    return this.http
+      .get<BrandRating[]>(this.urlRating, { responseType: "json"})
+      .pipe(
+        tap((_) => console.log('fetched brandsRatings')),
+        catchError(
+            this.errorHandlerService.handleError<BrandRating[]>("fetchAllRatings", [])
+        )
+      );
 
   }
   

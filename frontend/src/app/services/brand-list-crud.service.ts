@@ -83,4 +83,14 @@ export class BrandListCrudService {
       .pipe(catchError(this.errorHandlerService.handleError<any>("update")));
   }
   
+  deleteRatings(name: string, country:string): Observable<any>{
+
+    const url = `http://localhost:3000/brandsRatings/${name},${country}`;
+
+    return this.http
+    .delete<BrandRating>(this.url, this.httpOptions)
+    .pipe(catchError(this.errorHandlerService.handleError<any>("delete")));
+
+  }
+
 }

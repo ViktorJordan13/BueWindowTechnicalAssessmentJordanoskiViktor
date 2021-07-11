@@ -99,5 +99,12 @@ updateRatings(brandRatingName: ThisType<BrandRating>, brandRatingCountry: ThisTy
     .updateRating(newBrandRating)
     .pipe(tap((_) => (this.brandsRatings$ = this.fetchAllRatings())));
 }
+
+deleteRatings(name: string, country:string): void{
+
+  this.brandsRatings$ = this.brandListCrudService
+    .deleteRatings(name, country)
+    .pipe(tap((_) => (this.brandsRatings$ = this.fetchAllRatings())));
+}
   
 }

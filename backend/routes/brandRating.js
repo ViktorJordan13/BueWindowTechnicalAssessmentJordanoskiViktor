@@ -10,6 +10,6 @@ router.post('/', brandRatingController.postBrandRatings);
 
 router.put('/', brandRatingController.putBrandRatings);
 
-router.delete('/', brandRatingController.deleteBrandRatings);
+router.delete('/:name,country', brandRatingController.deleteBrandRatings);
 
 module.exports = router;

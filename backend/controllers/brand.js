@@ -47,7 +47,7 @@ exports.putBrand =  async (req, res, next) => {
 exports.deleteBrand =  async (req, res, next) => {
 
     try{
-        const deleteResponse = await Brand.delete(req.body.id);
+        const deleteResponse = await Brand.delete(req.params.id);
         res.status(200).json(deleteResponse);
     
     }catch(err){

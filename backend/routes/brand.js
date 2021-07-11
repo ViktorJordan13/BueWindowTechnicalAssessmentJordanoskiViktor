@@ -10,6 +10,6 @@ router.post('/', brandController.postBrand);
 
 router.put('/', brandController.putBrand);
 
-router.delete('/', brandController.deleteBrand);
+router.delete('/:id', brandController.deleteBrand);
 
 module.exports = router;
